@@ -1,0 +1,65 @@
+site_name: MkDocs for Technical Writers
+site_url: https://douglasebhoman.github.io/mkdocs-for-technical-writers/
+site_author: Douglas Ebhoman
+site_description: A practical guide to building and deploying documentation sites with MkDocs — written for technical writers adopting Docs-as-Code workflows.
+
+repo_name: Douglasebhoman/mkdocs-for-technical-writers
+repo_url: https://github.com/Douglasebhoman/mkdocs-for-technical-writers
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  homepage: https://douglasebhoman.com
+  palette:
+    scheme: slate
+    primary: custom
+    accent: custom
+  font:
+    text: false
+    code: false
+  features:
+    - navigation.instant
+    - navigation.top
+    - navigation.sections
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - What is MkDocs: what-is-mkdocs.md
+  - Prerequisites: prerequisites.md
+  - Installation: installation.md
+  - Creating a Project: creating-a-project.md
+  - Configuring mkdocs.yml: configuring-mkdocs-yml.md
+  - Writing Content: writing-content.md
+  - Previewing Locally: previewing-locally.md
+  - Deploying to GitHub Pages: deploying-to-github-pages.md
+  - Custom Domain: custom-domain.md
+  - Troubleshooting: troubleshooting.md
+
+extra_css:
+  - stylesheets/brand.css
+
+extra:
+  social:
+    - icon: fontawesome/solid/house
+      link: https://douglasebhoman.com
+      name: douglasebhoman.com
+
+copyright: '© 2026 Douglas Ebhoman · <a href="https://douglasebhoman.com">douglasebhoman.com</a>'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - def_list
+  - tables
