@@ -1,149 +1,308 @@
-# Deploying to GitHub Pages
+# Troubleshooting
 
-This page is part of a complete guide to building and deploying documentation sites with MkDocs. If you have not yet previewed your site locally, start at [Previewing Locally](previewing-locally.md).
+This page is part of a complete guide to building and deploying documentation sites with MkDocs. If you are working through the guide from the beginning, start at [What is MkDocs](what-is-mkdocs.md).
 
-Everything you have built locally is about to become publicly accessible. This page covers every step, from creating the repository to seeing your documentation live at a real URL. Follow each step in order and do not skip ahead.
+If something is not working, you are in the right place. Every error listed here has a clear fix. Work through the relevant entry from top to bottom. The most common problems appear first.
+
+If your issue is not listed here, check the [MkDocs documentation](https://www.mkdocs.org/) or the [Material for MkDocs documentation](https://squidfunk.github.io/mkdocs-material/).
 
 ---
 
-## Before you deploy
+## MkDocs is not recognised as a command
 
-Make sure the following are in place before continuing:
-
-- Your documentation content is complete and all pages, links, and images have been verified in local preview.
-- Git is installed on your machine. Run `git --version` to confirm.
-- You have a GitHub account. Create one at [github.com](https://github.com) if you do not already have one.
-- Your `mkdocs.yml` has `site_url` set to your GitHub Pages URL:
-
-```yaml
-site_url: https://yourusername.github.io/your-repo-name/
+**What you see:**
+```
+'mkdocs' is not recognized as an internal or external command
 ```
 
-Confirm the URL matches the pattern `https://yourusername.github.io/your-repo-name/` exactly. A wrong URL will cause broken links on the live site.
+**What causes it:**
+Python was not added to PATH during installation, or MkDocs was installed in a Python environment your terminal cannot access.
 
-> **Note:** If you do not know your repository name yet, complete the next section first and come back to update this setting before running the deploy command.
+**How to fix it:**
+
+On Windows, reinstall Python from [python.org](https://www.python.org/downloads/) and check the box that says **"Add Python to PATH"** during setup. Then reinstall MkDocs:
+
+```bash
+pip install mkdocs
+pip install mkdocs-material
+```
+
+Close and reopen your terminal after reinstalling. Run `mkdocs --version` to confirm the fix worked.
+
+On macOS and Linux, close and reopen your terminal after installation. If `mkdocs` is still not recognised, run the following to confirm MkDocs is installed:
+
+```bash
+python -m mkdocs --version
+```
 
 ---
 
-## Create a GitHub repository
+## pip is not recognised as a command
 
-1. Log in to your GitHub account at [github.com](https://github.com).
-2. Click the **+** icon in the top-right corner and select **New repository**.
-3. Give the repository a name that matches your project. For example, `mkdocs-for-technical-writers`.
-4. Add an optional description.
-5. Set visibility to **Public**. GitHub Pages is available on public repositories on the free plan.
-6. Do not initialise the repository with a README, `.gitignore`, or licence. Initialising with these files creates a commit history that conflicts with your local project when you try to push.
-7. Click **Create repository**.
+**What you see:**
+```
+'pip' is not recognized as an internal or external command
+```
 
-GitHub will show you a page with setup instructions. Keep this tab open. You will need the repository URL in the next step.
+**What causes it:**
+On macOS and Linux, the correct command is often `pip3` rather than `pip` when multiple Python versions are installed. On Windows, pip may not have been included during Python setup.
+
+**How to fix it:**
+
+On macOS and Linux, try running `pip3` instead of `pip` for all installation commands:
+
+```bash
+pip3 install mkdocs
+pip3 install mkdocs-material
+```
+
+On Windows, if both `pip` and `pip3` fail, reinstall Python from [python.org](https://www.python.org/downloads/) and ensure pip is included during setup.
 
 ---
 
-## Connect your local project to the repository
+## mkdocs serve fails with a docs_dir error
 
-Navigate to your project folder in your terminal:
+**What you see:**
+```
+ERROR - Config value 'docs_dir': The "docs" directory does not exist.
+```
+
+**What causes it:**
+You ran `mkdocs serve` from outside your project folder. MkDocs looks for the `docs/` directory relative to where the command is run. If you are in the wrong directory, MkDocs cannot find the docs folder.
+
+**How to fix it:**
+Navigate into your project folder first, then run the command:
 
 ```bash
 cd path/to/your/project
+mkdocs serve
 ```
 
-Then run the following commands in order:
-
-**Initialise Git** (skip this if your project is already a Git repository):
-
-```bash
-git init
-```
-
-**Stage all files:**
-
-```bash
-git add .
-```
-
-**Create your first commit:**
-
-```bash
-git commit -m "Initial commit"
-```
-
-**Link your local repository to GitHub:**
-
-```bash
-git remote add origin https://github.com/yourusername/your-repo-name.git
-```
-
-Replace the URL with the repository URL from the GitHub tab you kept open.
-
-**Push to GitHub:**
-
-```bash
-git push -u origin main
-```
-
-> **What you should see:** GitHub confirms the push with a summary of the files uploaded. If you see an error about the branch name, run `git branch` to see your current branch name, then try `git push -u origin master` if your branch is named `master` instead of `main`.
+Confirm you are in the right place by running `dir` (Windows) or `ls` (macOS/Linux) and checking that `mkdocs.yml` is visible in the output.
 
 ---
 
-## Deploy with mkdocs gh-deploy
+## Images not rendering on the live site
 
-MkDocs includes a built-in deployment command that builds your site and pushes it to the `gh-pages` branch of your repository automatically. You do not need to run `mkdocs build` first. The deploy command handles the build step.
+**What you see:**
+Images display correctly in local preview but appear as broken links on the live site.
 
-Run:
+**What causes it:**
+The image file is stored outside the `docs/` folder, or the file path in the Markdown is incorrect relative to the page referencing it.
+
+**How to fix it:**
+
+1. Confirm the image file is inside the `docs/` folder. For example, `docs/assets/diagram.png`. Files outside `docs/` are not included in the build.
+2. Check the file path in your Markdown. The path must be relative to the current page:
+
+```markdown
+![Alt text](assets/diagram.png)
+```
+
+3. Check for case sensitivity. On Linux and macOS, `Diagram.png` and `diagram.png` are different files. The filename in your Markdown must match the actual filename exactly.
+4. Redeploy after fixing:
 
 ```bash
 mkdocs gh-deploy
 ```
 
-> **What you should see:** MkDocs builds your site, pushes the static files to the `gh-pages` branch, and prints a confirmation message including your live site URL:
-> ```
-> INFO - Your documentation should shortly be available at:
-> https://yourusername.github.io/your-repo-name/
-> ```
+---
 
-If this command fails, see the [Troubleshooting](troubleshooting.md) page for the most common deployment errors.
+## Site not updating after mkdocs gh-deploy
+
+**What you see:**
+You run `mkdocs gh-deploy` successfully but the live site still shows the old content.
+
+**What causes it:**
+Either your browser is showing a cached version of the old site, GitHub Pages is not configured to serve from `gh-pages`, or the deployment pushed to the wrong branch.
+
+**How to fix it:**
+
+Start with step 1. A hard refresh fixes most cases. If the content is still old after refreshing, work through the remaining steps.
+
+1. Hard refresh your browser with `Ctrl + Shift + R` (Windows) or `Cmd + Shift + R` (macOS) to bypass the cache.
+2. Confirm the `gh-pages` branch exists in your repository. Go to the Code tab and select branches from the dropdown.
+3. Go to **Settings** then **Pages** and confirm the source is set to the `gh-pages` branch.
+4. Check the **Actions** tab in your repository and look for the `pages-build-deployment` workflow. Confirm it completed successfully. If it shows a red failure icon, see the GitHub Actions section below.
 
 ---
 
-## Enable GitHub Pages in repository settings
+## GitHub Actions workflow failure
 
-After running `mkdocs gh-deploy`, the `gh-pages` branch exists in your repository. Now tell GitHub to serve it as your Pages site:
+**What you see:**
+The `mkdocs gh-deploy` command completes successfully, but the live site does not update. The **Actions** tab in your repository shows a red failure icon next to the `pages-build-deployment` workflow.
 
-1. Go to your repository on GitHub.
-2. Click **Settings** in the top navigation menu.
-3. In the left sidebar, click **Pages**.
-4. Under **Source**, select **Deploy from a branch**. If you see GitHub Actions as the default source option, select Branch instead and proceed with the steps below.
-5. Under **Branch**, select `gh-pages` and leave the folder set to `/ (root)`.
-6. Click **Save**.
+**What causes it:**
+GitHub Actions failed to build or publish the site. Common causes include incorrect workflow permissions, the `gh-pages` branch not being recognised as the Pages source, or a build error in the generated site files.
 
-> **Note:** If you do not see these options, check that your repository is set to Public. GitHub Pages is not available on private repositories on the free plan. If you have already run `mkdocs gh-deploy` and the `gh-pages` branch exists, GitHub Pages may already be configured automatically. Check the Pages settings before making changes.
+**How to fix it:**
 
----
+1. Go to the **Actions** tab in your repository.
+2. Click the failed workflow run to open it.
+3. Expand the failed step to read the error message. This tells you exactly what went wrong.
+4. Fix the specific error. Common fixes include:
 
-## Your live site URL
-
-Once GitHub Pages is enabled, your site will be available at:
-
-```
-https://yourusername.github.io/your-repo-name/
-```
-
-It typically goes live within a few minutes of enabling Pages. In some cases it can take up to 10 minutes.
-
-You will see a confirmation banner in the GitHub Pages settings once the site is live. To monitor deployment status, go to the **Actions** tab in your repository and look for the `pages-build-deployment` workflow. GitHub runs this workflow each time the `gh-pages` branch is updated.
-
----
-
-## Updating your site
-
-Every time you make changes to your documentation, redeploy by running:
+**Permissions error:**
+Go to **Settings** then **Actions** then **General** and under **Workflow permissions**, select **Read and write permissions**. Then redeploy:
 
 ```bash
 mkdocs gh-deploy
 ```
 
-This rebuilds the site and pushes the updated files to `gh-pages`. The live site will update within a minute or two.
+**Pages source not configured:**
+Go to **Settings** then **Pages** and confirm the source is set to **Deploy from a branch** with `gh-pages` selected.
+
+**Build error in generated files:**
+Run `mkdocs build` locally and check the terminal output for errors. Fix any issues in your content or configuration, then redeploy.
 
 ---
 
-Once your site is live, move to [Custom Domain](custom-domain.md) to connect it to your own domain name. If you do not need a custom domain, you can skip directly to [Troubleshooting](troubleshooting.md) or consider your site complete.
+## Pages not appearing in navigation
+
+**What you see:**
+You created a Markdown file in `docs/` but it does not appear in the sidebar navigation on the site.
+
+**What causes it:**
+MkDocs uses explicit navigation. A page must be listed in the `nav` block of `mkdocs.yml` to appear in the sidebar.
+
+**How to fix it:**
+Open `mkdocs.yml` and add the missing page to the `nav` block:
+
+```yaml
+nav:
+  - Home: index.md
+  - Your New Page: your-new-page.md
+```
+
+Save the file and the local preview will update automatically. Redeploy to update the live site.
+
+---
+
+## YAML configuration error
+
+**What you see:**
+```
+ERROR - Config value 'theme': Unrecognised theme name: ...
+```
+or
+```
+ERROR - mkdocs.yml contains a syntax error
+```
+
+**What causes it:**
+YAML is whitespace-sensitive. A missing colon, incorrect indentation, or a tab character instead of spaces will cause MkDocs to fail.
+
+**How to fix it:**
+
+1. Check for missing colons after keys:
+
+```yaml
+# Wrong
+site_name My Documentation
+
+# Correct
+site_name: My Documentation
+```
+
+2. Check that nested blocks are correctly indented with spaces and never tabs:
+
+```yaml
+# Wrong
+theme:
+name: material
+
+# Correct
+theme:
+  name: material
+```
+
+3. Use a YAML validator such as [yamllint.com](https://www.yamllint.com/) to identify the exact line causing the error.
+
+---
+
+## Admonitions not rendering
+
+**What you see:**
+Your `!!! note` or `!!! warning` syntax appears as plain text rather than a styled callout box.
+
+**What causes it:**
+Either the `admonition` extension is not enabled in `mkdocs.yml`, or the content inside the admonition block is not indented correctly.
+
+**How to fix it:**
+
+First, confirm the extension is enabled in `mkdocs.yml`:
+
+```yaml
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+```
+
+If the extension is enabled but the admonition still renders as plain text, check the indentation. Content inside an admonition block must be indented with exactly four spaces:
+
+```markdown
+# Wrong - no indentation
+!!! note
+This content will not render inside the box.
+
+# Correct - four spaces
+!!! note
+    This content will render inside the box.
+```
+
+---
+
+## Custom domain not working
+
+**What you see:**
+Your custom domain returns a 404 error or still redirects to the default GitHub Pages URL.
+
+**What causes it:**
+The CNAME file is missing from the `docs/` folder, the domain has not been set in GitHub Pages settings, or DNS records have not propagated yet.
+
+**How to fix it:**
+
+1. Confirm the CNAME file exists inside `docs/` and contains only your domain with no extra characters:
+
+```
+yourdomain.com
+```
+
+2. Go to **Settings** then **Pages** in your repository and confirm your custom domain is entered in the **Custom domain** field.
+3. Confirm your DNS records are configured correctly with your domain registrar. See the [Personal Website Setup Guide](https://douglasebhoman.hashnode.dev/how-to-build-a-personal-website-with-a-custom-domain-and-professional-email) for the correct DNS configuration.
+4. Wait. DNS propagation can take up to 48 hours. If everything is configured correctly, the domain will resolve once propagation is complete.
+
+---
+
+## mkdocs gh-deploy fails with a permission error
+
+**What you see:**
+```
+ERROR - Failed to push to remote repository
+```
+or a Git authentication error.
+
+**What causes it:**
+Your terminal is not authenticated with GitHub, or the remote URL is set incorrectly.
+
+**How to fix it:**
+
+1. Confirm the remote URL is correct:
+
+```bash
+git remote -v
+```
+
+The output should show your repository URL. If it is wrong, reset it:
+
+```bash
+git remote set-url origin https://github.com/yourusername/your-repo-name.git
+```
+
+2. If you are using HTTPS, GitHub requires a personal access token instead of your account password. Generate one at **GitHub** then **Settings** then **Developer settings** then **Personal access tokens**. When your terminal prompts for a password, paste your personal access token instead of your GitHub account password.
+
+3. If you are using SSH, confirm your SSH key is added to your GitHub account under **Settings** then **SSH and GPG keys**.
+
+---
+
+If none of the solutions above resolve your issue, check the [MkDocs GitHub Issues](https://github.com/mkdocs/mkdocs/issues) page or the [Material for MkDocs Discussions](https://github.com/squidfunk/mkdocs-material/discussions) for community support.

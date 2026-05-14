@@ -1,149 +1,98 @@
-# Deploying to GitHub Pages
+# Custom Domain
 
-This page is part of a complete guide to building and deploying documentation sites with MkDocs. If you have not yet previewed your site locally, start at [Previewing Locally](previewing-locally.md).
+This page is part of a complete guide to building and deploying documentation sites with MkDocs. If you have not yet deployed your site, start at [Deploying to GitHub Pages](deploying-to-github-pages.md).
 
-Everything you have built locally is about to become publicly accessible. This page covers every step, from creating the repository to seeing your documentation live at a real URL. Follow each step in order and do not skip ahead.
-
----
-
-## Before you deploy
-
-Make sure the following are in place before continuing:
-
-- Your documentation content is complete and all pages, links, and images have been verified in local preview.
-- Git is installed on your machine. Run `git --version` to confirm.
-- You have a GitHub account. Create one at [github.com](https://github.com) if you do not already have one.
-- Your `mkdocs.yml` has `site_url` set to your GitHub Pages URL:
-
-```yaml
-site_url: https://yourusername.github.io/your-repo-name/
-```
-
-Confirm the URL matches the pattern `https://yourusername.github.io/your-repo-name/` exactly. A wrong URL will cause broken links on the live site.
-
-> **Note:** If you do not know your repository name yet, complete the next section first and come back to update this setting before running the deploy command.
-
----
-
-## Create a GitHub repository
-
-1. Log in to your GitHub account at [github.com](https://github.com).
-2. Click the **+** icon in the top-right corner and select **New repository**.
-3. Give the repository a name that matches your project. For example, `mkdocs-for-technical-writers`.
-4. Add an optional description.
-5. Set visibility to **Public**. GitHub Pages is available on public repositories on the free plan.
-6. Do not initialise the repository with a README, `.gitignore`, or licence. Initialising with these files creates a commit history that conflicts with your local project when you try to push.
-7. Click **Create repository**.
-
-GitHub will show you a page with setup instructions. Keep this tab open. You will need the repository URL in the next step.
-
----
-
-## Connect your local project to the repository
-
-Navigate to your project folder in your terminal:
-
-```bash
-cd path/to/your/project
-```
-
-Then run the following commands in order:
-
-**Initialise Git** (skip this if your project is already a Git repository):
-
-```bash
-git init
-```
-
-**Stage all files:**
-
-```bash
-git add .
-```
-
-**Create your first commit:**
-
-```bash
-git commit -m "Initial commit"
-```
-
-**Link your local repository to GitHub:**
-
-```bash
-git remote add origin https://github.com/yourusername/your-repo-name.git
-```
-
-Replace the URL with the repository URL from the GitHub tab you kept open.
-
-**Push to GitHub:**
-
-```bash
-git push -u origin main
-```
-
-> **What you should see:** GitHub confirms the push with a summary of the files uploaded. If you see an error about the branch name, run `git branch` to see your current branch name, then try `git push -u origin master` if your branch is named `master` instead of `main`.
-
----
-
-## Deploy with mkdocs gh-deploy
-
-MkDocs includes a built-in deployment command that builds your site and pushes it to the `gh-pages` branch of your repository automatically. You do not need to run `mkdocs build` first. The deploy command handles the build step.
-
-Run:
-
-```bash
-mkdocs gh-deploy
-```
-
-> **What you should see:** MkDocs builds your site, pushes the static files to the `gh-pages` branch, and prints a confirmation message including your live site URL:
-> ```
-> INFO - Your documentation should shortly be available at:
-> https://yourusername.github.io/your-repo-name/
-> ```
-
-If this command fails, see the [Troubleshooting](troubleshooting.md) page for the most common deployment errors.
-
----
-
-## Enable GitHub Pages in repository settings
-
-After running `mkdocs gh-deploy`, the `gh-pages` branch exists in your repository. Now tell GitHub to serve it as your Pages site:
-
-1. Go to your repository on GitHub.
-2. Click **Settings** in the top navigation menu.
-3. In the left sidebar, click **Pages**.
-4. Under **Source**, select **Deploy from a branch**. If you see GitHub Actions as the default source option, select Branch instead and proceed with the steps below.
-5. Under **Branch**, select `gh-pages` and leave the folder set to `/ (root)`.
-6. Click **Save**.
-
-> **Note:** If you do not see these options, check that your repository is set to Public. GitHub Pages is not available on private repositories on the free plan. If you have already run `mkdocs gh-deploy` and the `gh-pages` branch exists, GitHub Pages may already be configured automatically. Check the Pages settings before making changes.
-
----
-
-## Your live site URL
-
-Once GitHub Pages is enabled, your site will be available at:
+A documentation site at `docs.yourcompany.com` signals that documentation is a first-class product, not an afterthought hosted on a platform URL. By default, your MkDocs site is served at a GitHub Pages address:
 
 ```
 https://yourusername.github.io/your-repo-name/
 ```
 
-It typically goes live within a few minutes of enabling Pages. In some cases it can take up to 10 minutes.
+A custom domain replaces that address with something you own. This makes your documentation feel professional, builds trust with your readers, and makes the URL easier to remember and share.
 
-You will see a confirmation banner in the GitHub Pages settings once the site is live. To monitor deployment status, go to the **Actions** tab in your repository and look for the `pages-build-deployment` workflow. GitHub runs this workflow each time the `gh-pages` branch is updated.
+This page covers the MkDocs-specific configuration required to connect a custom domain. For the full DNS and GitHub Pages setup, including Cloudflare configuration, A records, and HTTPS, see the [Personal Website Setup Guide](https://douglasebhoman.com/personal-website-setup-guide/).
 
 ---
 
-## Updating your site
+## Add a CNAME file to your project
 
-Every time you make changes to your documentation, redeploy by running:
+GitHub Pages uses a CNAME file to map your custom domain to your repository. In an MkDocs project, this file must live inside the `docs/` folder and not in the project root alongside `mkdocs.yml`. MkDocs copies everything inside `docs/` into the built site, so placing the CNAME file there ensures it is included every time you deploy.
+
+Create a file called `CNAME` (no file extension) inside your `docs/` folder:
+
+```
+my-project/
+├── mkdocs.yml
+└── docs/
+    ├── index.md
+    └── CNAME
+```
+
+The file should contain only your custom domain:
+
+```
+yourdomain.com
+```
+
+Or if you are using a subdomain:
+
+```
+docs.yourdomain.com
+```
+
+Do not include `https://` or a trailing slash. GitHub Pages will reject the domain if either is present.
+
+Use a subdomain like `docs.yourdomain.com` if your root domain is already serving another site, such as a marketing page or portfolio. Use the root domain if this documentation site is your primary web presence.
+
+---
+
+## Update site_url in mkdocs.yml
+
+Update your `mkdocs.yml` to reflect your custom domain:
+
+```yaml
+site_url: https://yourdomain.com/
+```
+
+This ensures MkDocs generates all internal links and asset paths relative to your custom domain rather than the default GitHub Pages URL.
+
+---
+
+## Redeploy your site
+
+After adding the CNAME file and updating `site_url`, redeploy your site:
 
 ```bash
 mkdocs gh-deploy
 ```
 
-This rebuilds the site and pushes the updated files to `gh-pages`. The live site will update within a minute or two.
+This rebuilds the site and pushes the updated files, including the CNAME file, to the `gh-pages` branch.
+
+> **Note:** If you skip this step, GitHub Pages will not recognise your custom domain and will revert to the default GitHub Pages URL.
 
 ---
 
-Once your site is live, move to [Custom Domain](custom-domain.md) to connect it to your own domain name. If you do not need a custom domain, you can skip directly to [Troubleshooting](troubleshooting.md) or consider your site complete.
+## Enable your custom domain in GitHub Pages settings
+
+After redeploying, tell GitHub Pages to serve your site from your custom domain:
+
+1. Go to your repository on GitHub.
+2. Click **Settings** in the top navigation menu.
+3. In the left sidebar, click **Pages**.
+4. Under **Custom domain**, enter your domain and click **Save**.
+5. Wait for the DNS check to complete. GitHub will display a confirmation once the domain is verified.
+6. Check the **Enforce HTTPS** box once it becomes available. This may take a few minutes after the DNS check passes.
+
+> **Note:** If the DNS check fails immediately, your DNS records may not have propagated yet. Wait a few minutes and try saving again.
+
+---
+
+## Verify your custom domain
+
+Once DNS is configured and GitHub Pages is updated, visit your custom domain in your browser and confirm your documentation site loads correctly.
+
+> **Note:** DNS changes can take anywhere from a few minutes to 48 hours to propagate globally. If your domain is not working immediately, wait and try again before troubleshooting. If your domain is still not working after 48 hours, see the [Troubleshooting](troubleshooting.md) page for the custom domain error entry.
+
+---
+
+Once your custom domain is live and verified, move to [Troubleshooting](troubleshooting.md) if you encounter any issues.
