@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A practical guide to building and deploying documentation sites with MkDocs — written for technical writers adopting Docs-as-Code workflows.">
+        <meta name="description" content="A complete guide to MkDocs for technical writers. Covers installation, configuration, GitHub Pages deployment, custom domains, and troubleshooting. Written for Docs-as-Code workflows.">
       
       
         <meta name="author" content="Douglas Ebhoman">
       
       
-        <link rel="canonical" href="https://douglasebhoman.github.io/mkdocs-for-technical-writers/troubleshooting/">
+        <link rel="canonical" href="https://douglasebhoman.com/mkdocs-for-technical-writers/troubleshooting/">
       
       
         <link rel="prev" href="../custom-domain/">
@@ -96,7 +96,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="MkDocs for Technical Writers" class="md-header__button md-logo" aria-label="MkDocs for Technical Writers" data-md-component="logo">
       
-  <img src="../assets/logo.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -207,7 +208,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="MkDocs for Technical Writers" class="md-nav__button md-logo" aria-label="MkDocs for Technical Writers" data-md-component="logo">
       
-  <img src="../assets/logo.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     MkDocs for Technical Writers
@@ -261,60 +263,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../what-is-mkdocs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    What is MkDocs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../prerequisites/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Prerequisites
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../installation/" class="md-nav__link">
         
   
@@ -342,41 +290,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../creating-a-project/" class="md-nav__link">
+      <a href="../configuration.md" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Creating a Project
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../configuring-mkdocs-yml/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Configuring mkdocs.yml
+    Configuration
   
 
     
@@ -423,41 +344,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../previewing-locally/" class="md-nav__link">
+      <a href="../deployment.md" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Previewing Locally
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../deploying-to-github-pages/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying to GitHub Pages
+    Deployment
   
 
     
@@ -859,12 +753,12 @@
   
 
 
-<h1 id="troubleshooting">Troubleshooting</h1>
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
 <p>This page is part of a complete guide to building and deploying documentation sites with MkDocs. If you are working through the guide from the beginning, start at <a href="../what-is-mkdocs/">What is MkDocs</a>.</p>
 <p>If something is not working, you are in the right place. Every error listed here has a clear fix. Work through the relevant entry from top to bottom. The most common problems appear first.</p>
 <p>If your issue is not listed here, check the <a href="https://www.mkdocs.org/">MkDocs documentation</a> or the <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs documentation</a>.</p>
 <hr />
-<h2 id="mkdocs-is-not-recognised-as-a-command">MkDocs is not recognised as a command</h2>
+<h2 id="mkdocs-is-not-recognised-as-a-command">MkDocs is not recognised as a command<a class="headerlink" href="#mkdocs-is-not-recognised-as-a-command" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&#39;mkdocs&#39; is not recognized as an internal or external command
 </code></pre></div></p>
@@ -880,7 +774,7 @@ Python was not added to PATH during installation, or MkDocs was installed in a P
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>--version
 </code></pre></div>
 <hr />
-<h2 id="pip-is-not-recognised-as-a-command">pip is not recognised as a command</h2>
+<h2 id="pip-is-not-recognised-as-a-command">pip is not recognised as a command<a class="headerlink" href="#pip-is-not-recognised-as-a-command" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&#39;pip&#39; is not recognized as an internal or external command
 </code></pre></div></p>
@@ -893,7 +787,7 @@ On macOS and Linux, the correct command is often <code>pip3</code> rather than <
 </code></pre></div>
 <p>On Windows, if both <code>pip</code> and <code>pip3</code> fail, reinstall Python from <a href="https://www.python.org/downloads/">python.org</a> and ensure pip is included during setup.</p>
 <hr />
-<h2 id="mkdocs-serve-fails-with-a-docs_dir-error">mkdocs serve fails with a docs_dir error</h2>
+<h2 id="mkdocs-serve-fails-with-a-docs_dir-error">mkdocs serve fails with a docs_dir error<a class="headerlink" href="#mkdocs-serve-fails-with-a-docs_dir-error" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ERROR - Config value &#39;docs_dir&#39;: The &quot;docs&quot; directory does not exist.
 </code></pre></div></p>
@@ -906,7 +800,7 @@ Navigate into your project folder first, then run the command:</p>
 </code></pre></div>
 <p>Confirm you are in the right place by running <code>dir</code> (Windows) or <code>ls</code> (macOS/Linux) and checking that <code>mkdocs.yml</code> is visible in the output.</p>
 <hr />
-<h2 id="images-not-rendering-on-the-live-site">Images not rendering on the live site</h2>
+<h2 id="images-not-rendering-on-the-live-site">Images not rendering on the live site<a class="headerlink" href="#images-not-rendering-on-the-live-site" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 Images display correctly in local preview but appear as broken links on the live site.</p>
 <p><strong>What causes it:</strong>
@@ -925,7 +819,7 @@ The image file is stored outside the <code>docs/</code> folder, or the file path
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mkdocs<span class="w"> </span>gh-deploy
 </code></pre></div>
 <hr />
-<h2 id="site-not-updating-after-mkdocs-gh-deploy">Site not updating after mkdocs gh-deploy</h2>
+<h2 id="site-not-updating-after-mkdocs-gh-deploy">Site not updating after mkdocs gh-deploy<a class="headerlink" href="#site-not-updating-after-mkdocs-gh-deploy" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 You run <code>mkdocs gh-deploy</code> successfully but the live site still shows the old content.</p>
 <p><strong>What causes it:</strong>
@@ -939,7 +833,7 @@ Either your browser is showing a cached version of the old site, GitHub Pages is
 <li>Check the <strong>Actions</strong> tab in your repository and look for the <code>pages-build-deployment</code> workflow. Confirm it completed successfully. If it shows a red failure icon, see the GitHub Actions section below.</li>
 </ol>
 <hr />
-<h2 id="github-actions-workflow-failure">GitHub Actions workflow failure</h2>
+<h2 id="github-actions-workflow-failure">GitHub Actions workflow failure<a class="headerlink" href="#github-actions-workflow-failure" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 The <code>mkdocs gh-deploy</code> command completes successfully, but the live site does not update. The <strong>Actions</strong> tab in your repository shows a red failure icon next to the <code>pages-build-deployment</code> workflow.</p>
 <p><strong>What causes it:</strong>
@@ -960,7 +854,7 @@ Go to <strong>Settings</strong> then <strong>Pages</strong> and confirm the sour
 <p><strong>Build error in generated files:</strong>
 Run <code>mkdocs build</code> locally and check the terminal output for errors. Fix any issues in your content or configuration, then redeploy.</p>
 <hr />
-<h2 id="pages-not-appearing-in-navigation">Pages not appearing in navigation</h2>
+<h2 id="pages-not-appearing-in-navigation">Pages not appearing in navigation<a class="headerlink" href="#pages-not-appearing-in-navigation" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 You created a Markdown file in <code>docs/</code> but it does not appear in the sidebar navigation on the site.</p>
 <p><strong>What causes it:</strong>
@@ -973,7 +867,7 @@ Open <code>mkdocs.yml</code> and add the missing page to the <code>nav</code> bl
 </code></pre></div>
 <p>Save the file and the local preview will update automatically. Redeploy to update the live site.</p>
 <hr />
-<h2 id="yaml-configuration-error">YAML configuration error</h2>
+<h2 id="yaml-configuration-error">YAML configuration error<a class="headerlink" href="#yaml-configuration-error" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ERROR - Config value &#39;theme&#39;: Unrecognised theme name: ...
 </code></pre></div>
@@ -1007,7 +901,7 @@ YAML is whitespace-sensitive. A missing colon, incorrect indentation, or a tab c
 <li>Use a YAML validator such as <a href="https://www.yamllint.com/">yamllint.com</a> to identify the exact line causing the error.</li>
 </ol>
 <hr />
-<h2 id="admonitions-not-rendering">Admonitions not rendering</h2>
+<h2 id="admonitions-not-rendering">Admonitions not rendering<a class="headerlink" href="#admonitions-not-rendering" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 Your <code>!!! note</code> or <code>!!! warning</code> syntax appears as plain text rather than a styled callout box.</p>
 <p><strong>What causes it:</strong>
@@ -1028,7 +922,7 @@ Either the <code>admonition</code> extension is not enabled in <code>mkdocs.yml<
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    This content will render inside the box.
 </code></pre></div>
 <hr />
-<h2 id="custom-domain-not-working">Custom domain not working</h2>
+<h2 id="custom-domain-not-working">Custom domain not working<a class="headerlink" href="#custom-domain-not-working" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 Your custom domain returns a 404 error or still redirects to the default GitHub Pages URL.</p>
 <p><strong>What causes it:</strong>
@@ -1045,7 +939,7 @@ The CNAME file is missing from the <code>docs/</code> folder, the domain has not
 <li>Wait. DNS propagation can take up to 48 hours. If everything is configured correctly, the domain will resolve once propagation is complete.</li>
 </ol>
 <hr />
-<h2 id="mkdocs-gh-deploy-fails-with-a-permission-error">mkdocs gh-deploy fails with a permission error</h2>
+<h2 id="mkdocs-gh-deploy-fails-with-a-permission-error">mkdocs gh-deploy fails with a permission error<a class="headerlink" href="#mkdocs-gh-deploy-fails-with-a-permission-error" title="Permanent link">&para;</a></h2>
 <p><strong>What you see:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ERROR - Failed to push to remote repository
 </code></pre></div>
@@ -1101,6 +995,30 @@ Your terminal is not authenticated with GitHub, or the remote URL is set incorre
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../custom-domain/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Custom Domain">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Custom Domain
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -1124,8 +1042,33 @@ Your terminal is not authenticated with GitHub, or the remote URL is set incorre
     
     
     
+      
+      
+    
+    <a href="https://linkedin.com/in/douglas-ebhoman-757329289" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Douglasebhoman" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
     <a href="https://douglasebhoman.com" target="_blank" rel="noopener" title="douglasebhoman.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272h16v176c0 35.3 28.7 64 64 64h288c35.3 0 64-28.7 64-64V272h16c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1zM240 320h32c26.5 0 48 21.5 48 48v96H192v-96c0-26.5 21.5-48 48-48"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
     </a>
   
 </div>
@@ -1143,7 +1086,7 @@ Your terminal is not authenticated with GitHub, or the remote URL is set incorre
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.top", "navigation.sections", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.top", "navigation.sections", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
