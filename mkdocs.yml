@@ -1,15 +1,13 @@
 site_name: MkDocs for Technical Writers
-site_url: https://douglasebhoman.github.io/mkdocs-for-technical-writers/
+site_url: https://douglasebhoman.com/mkdocs-for-technical-writers/
 site_author: Douglas Ebhoman
-site_description: A practical guide to building and deploying documentation sites with MkDocs — written for technical writers adopting Docs-as-Code workflows.
+site_description: A complete guide to MkDocs for technical writers. Covers installation, configuration, GitHub Pages deployment, custom domains, and troubleshooting. Written for Docs-as-Code workflows.
 
 repo_name: Douglasebhoman/mkdocs-for-technical-writers
 repo_url: https://github.com/Douglasebhoman/mkdocs-for-technical-writers
 
 theme:
   name: material
-  logo: assets/logo.svg
-  homepage: https://douglasebhoman.com
   palette:
     scheme: slate
     primary: custom
@@ -21,35 +19,25 @@ theme:
     - navigation.instant
     - navigation.top
     - navigation.sections
+    - navigation.footer
     - search.highlight
     - search.suggest
     - content.code.copy
   icon:
     repo: fontawesome/brands/github
-
-nav:
-  - Home: index.md
-  - What is MkDocs: what-is-mkdocs.md
-  - Prerequisites: prerequisites.md
-  - Installation: installation.md
-  - Creating a Project: creating-a-project.md
-  - Configuring mkdocs.yml: configuring-mkdocs-yml.md
-  - Writing Content: writing-content.md
-  - Previewing Locally: previewing-locally.md
-  - Deploying to GitHub Pages: deploying-to-github-pages.md
-  - Custom Domain: custom-domain.md
-  - Troubleshooting: troubleshooting.md
+  social_image: assets/images/mkdocs-for-technical-writers-card.png
 
 extra_css:
   - stylesheets/brand.css
 
-extra:
-  social:
-    - icon: fontawesome/solid/house
-      link: https://douglasebhoman.com
-      name: douglasebhoman.com
-
-copyright: '© 2026 Douglas Ebhoman · <a href="https://douglasebhoman.com">douglasebhoman.com</a>'
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Configuration: configuration.md
+  - Writing Content: writing-content.md
+  - Deployment: deployment.md
+  - Custom Domain: custom-domain.md
+  - Troubleshooting: troubleshooting.md
 
 markdown_extensions:
   - admonition
@@ -63,3 +51,33 @@ markdown_extensions:
   - attr_list
   - def_list
   - tables
+  - toc:
+      permalink: true
+
+extra:
+  meta:
+    - name: og:type
+      content: website
+    - name: og:title
+      content: MkDocs for Technical Writers
+    - name: og:description
+      content: A complete guide to MkDocs for technical writers. Covers installation, configuration, GitHub Pages deployment, custom domains, and troubleshooting.
+    - name: og:image
+      content: https://douglasebhoman.com/mkdocs-for-technical-writers/assets/images/mkdocs-for-technical-writers-card.png
+    - name: twitter:card
+      content: summary_large_image
+    - name: twitter:title
+      content: MkDocs for Technical Writers
+    - name: twitter:description
+      content: A complete guide to MkDocs for technical writers. Covers installation, configuration, GitHub Pages deployment, custom domains, and troubleshooting.
+    - name: twitter:image
+      content: https://douglasebhoman.com/mkdocs-for-technical-writers/assets/images/mkdocs-for-technical-writers-card.png
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/douglas-ebhoman-757329289
+    - icon: fontawesome/brands/github
+      link: https://github.com/Douglasebhoman
+    - icon: fontawesome/solid/globe
+      link: https://douglasebhoman.com
+
+copyright: '© 2026 Douglas Ebhoman · <a href="https://douglasebhoman.com">douglasebhoman.com</a>'
