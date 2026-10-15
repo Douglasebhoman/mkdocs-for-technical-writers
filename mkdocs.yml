@@ -25,7 +25,7 @@ theme:
     - content.code.copy
   icon:
     repo: fontawesome/brands/github
-  social_image: assets/images/mkdocs-for-technical-writers-card.png
+  custom_dir: overrides
 
 extra_css:
   - stylesheets/brand.css
@@ -59,23 +59,10 @@ markdown_extensions:
       permalink: true
 
 extra:
-  meta:
-    - name: og:type
-      content: website
-    - name: og:title
-      content: MkDocs for Technical Writers
-    - name: og:description
-      content: A complete guide to MkDocs for technical writers. Covers installation, configuration, GitHub Pages deployment, custom domains, and troubleshooting.
-    - name: og:image
-      content: https://douglasebhoman.com/mkdocs-for-technical-writers/assets/images/mkdocs-for-technical-writers-card.png
-    - name: twitter:card
-      content: summary_large_image
-    - name: twitter:title
-      content: MkDocs for Technical Writers
-    - name: twitter:description
-      content: A complete guide to MkDocs for technical writers. Covers installation, configuration, GitHub Pages deployment, custom domains, and troubleshooting.
-    - name: twitter:image
-      content: https://douglasebhoman.com/mkdocs-for-technical-writers/assets/images/mkdocs-for-technical-writers-card.png
+  share_image:
+    url: https://douglasebhoman.com/assets/images/mkdocs-for-technical-writers-card.png
+    width: 1731
+    height: 909
   social:
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/douglas-ebhoman-757329289
