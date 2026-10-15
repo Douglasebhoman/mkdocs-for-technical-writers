@@ -1,0 +1,46 @@
+name: Build and deploy
+
+# Every push and pull request to master gets a strict build, so a nav entry
+# naming a missing file fails here instead of shipping. Only a push to master
+# that passed the strict build deploys, so the published site is always built
+# from a commit, never from a local working copy.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install pinned dependencies
+        run: pip install -r requirements.txt
+
+      - name: Strict build
+        run: mkdocs build --strict
+
+      - name: Deploy to GitHub Pages
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/master'
+        # The push authenticates with the built-in GITHUB_TOKEN, which
+        # actions/checkout stores as the git credential. The job's
+        # contents: write permission is what allows it to push gh-pages.
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Start from the published branch so gh-deploy keeps its history
+          # and can check the MkDocs version of the previous deployment.
+          git fetch --no-tags --depth=1 origin gh-pages:gh-pages
+          mkdocs gh-deploy --force
